@@ -77,6 +77,10 @@ jobs:
           files: >-
             dist/*.tar.gz
             dist/*.whl
+            dist/*.sigstore
+
+      - name: Remove signature files as pypa/gh-action-pypi-publish does not support them
+        run: rm -f dist/*.sigstore
 
       - name: Publish distribution 📦 to TestPyPI
         if: ${{ steps.get-version.outputs.draft == 'true' }}
