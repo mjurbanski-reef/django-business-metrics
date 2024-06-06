@@ -54,6 +54,7 @@ jobs:
         with:
           version: ${{ steps.get-version.outputs.version }}
           path: ./CHANGELOG.md
+        continue-on-error: ${{ steps.get-version.outputs.draft }}
 
       - name: Build
         run: pdm build
